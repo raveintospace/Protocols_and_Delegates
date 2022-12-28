@@ -7,18 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
-class DetailPresenter  {
+class DetailPresenter: DetailPresenterProtocol  {
     
     // MARK: Properties
     weak var view: DetailViewProtocol?
     var interactor: DetailInteractorInputProtocol?
     var wireFrame: DetailWireFrameProtocol?
+    var delegate: StringProtocol?
     
-}
-
-extension DetailPresenter: DetailPresenterProtocol {
-    // TODO: implement presenter methods
     func viewDidLoad() {
         view?.setupDetailView()
     }

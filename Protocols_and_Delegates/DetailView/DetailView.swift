@@ -9,10 +9,16 @@
 import Foundation
 import UIKit
 
+protocol StringProtocol {
+    func didSelectString(_ string: String)
+}
+
+
 class DetailView: UIViewController {
 
     // MARK: - Properties
     var presenter: DetailPresenterProtocol?
+    var delegate: StringProtocol!
     
     var safeArea: UILayoutGuide!
     var detailTextField = UITextField()
@@ -67,7 +73,11 @@ extension DetailView: DetailViewProtocol {
         goToHomeViewButton.addTarget(self, action: #selector(goToHomeViewButtonPressed), for: .touchUpInside)
     }
     
+    // pending to go to HV with presenter & wireframe
     @objc func goToHomeViewButtonPressed() {
+            delegate.didSelectString(detailTextField.text!)
+            print("Text from delegate: \(detailTextField.text!)")
+        
         self.navigationController?.popToRootViewController(animated: true)
     }
 }

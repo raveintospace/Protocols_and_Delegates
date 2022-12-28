@@ -26,3 +26,6 @@ class DetailWireFrame: DetailWireFrameProtocol {
         return view
     }
 }
+
+// https://cheesecakelabs.com/blog/best-practices-viper-architecture/ dimecres
+// https://stackoverflow.com/questions/60734494/pass-data-to-previous-viewcontroller-viper

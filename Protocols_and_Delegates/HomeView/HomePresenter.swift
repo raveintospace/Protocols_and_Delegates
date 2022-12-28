@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class HomePresenter  {
     
@@ -14,7 +15,6 @@ class HomePresenter  {
     weak var view: HomeViewProtocol?
     var interactor: HomeInteractorInputProtocol?
     var wireFrame: HomeWireFrameProtocol?
-    
 }
 
 extension HomePresenter: HomePresenterProtocol {
@@ -23,6 +23,7 @@ extension HomePresenter: HomePresenterProtocol {
         view?.setupHomeView()
     }
     
+    // create a func to show the detail view
     func showDetailView() {
         wireFrame?.presentNewDetailView(from: view!)
     }
@@ -30,4 +31,9 @@ extension HomePresenter: HomePresenterProtocol {
 
 extension HomePresenter: HomeInteractorOutputProtocol {
     // TODO: implement interactor output methods
+}
+
+extension HomePresenter: StringProtocol {
+    func didSelectString(_ string: String) {
+    }
 }

@@ -28,9 +28,11 @@ class HomeWireFrame: HomeWireFrameProtocol {
     }
     
     func presentNewDetailView(from view: HomeViewProtocol) {
-        let newDetailView = DetailWireFrame.createDetailModule()
+        let newDetailView = DetailWireFrame.createDetailModule() as! DetailView
         
         let viewController = view as! HomeView
         viewController.navigationController?.pushViewController(newDetailView, animated: true)
+        
+        newDetailView.delegate = viewController
     }
 }

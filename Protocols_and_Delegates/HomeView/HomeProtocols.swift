@@ -19,7 +19,7 @@ protocol HomeWireFrameProtocol {
     // PRESENTER -> WIREFRAME
     static func createHomeModule() -> UINavigationController
     
-    func presentNewDetailView(from view: HomeViewProtocol)
+    func presentNewDetailView(from view: HomeViewProtocol) // ask the wireframe to show dv
 }
 
 protocol HomePresenterProtocol: AnyObject {
@@ -29,6 +29,7 @@ protocol HomePresenterProtocol: AnyObject {
     var wireFrame: HomeWireFrameProtocol? { get set }
     
     func viewDidLoad()
+    
     func showDetailView()
 }
 

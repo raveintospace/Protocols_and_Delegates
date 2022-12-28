@@ -61,11 +61,17 @@ extension HomeView: HomeViewProtocol {
         
         homeLabel.textColor = .black
         homeLabel.font = UIFont(name: "Verdana", size: 16)
-        homeLabel.text = "Label"
     }
     
     @objc func goToDetailViewAction() {
-        presenter?.showDetailView()
+        presenter?.showDetailView()        
     }
     
+}
+
+extension HomeView: StringProtocol {
+    func didSelectString(_ string: String) {
+        print(string)
+        homeLabel.text = string
+    }
 }
