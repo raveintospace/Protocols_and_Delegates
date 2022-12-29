@@ -9,13 +9,8 @@
 import Foundation
 import UIKit
 
-protocol StringProtocol {
-    func didSelectString(_ string: String)
-}
-
-
 class DetailView: UIViewController {
-
+    
     // MARK: - Properties
     var presenter: DetailPresenterProtocol?
     var delegate: StringProtocol!
@@ -23,9 +18,9 @@ class DetailView: UIViewController {
     var safeArea: UILayoutGuide!
     var detailTextField = UITextField()
     var goToHomeViewButton = UIButton()
-
+    
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
@@ -53,7 +48,7 @@ extension DetailView: DetailViewProtocol {
         detailTextField.placeholder = "Insert text for the home view"
         detailTextField.backgroundColor = .white
         detailTextField.textAlignment = .center
-
+        
         // add a maximum lenght for textfield
         // https://developer.apple.com/forums/thread/110754
         // https://www.hackingwithswift.com/example-code/uikit/how-to-limit-the-number-of-characters-in-a-uitextfield-or-uitextview
@@ -73,11 +68,9 @@ extension DetailView: DetailViewProtocol {
         goToHomeViewButton.addTarget(self, action: #selector(goToHomeViewButtonPressed), for: .touchUpInside)
     }
     
-    // pending to go to HV with presenter & wireframe
     @objc func goToHomeViewButtonPressed() {
-            delegate.didSelectString(detailTextField.text!)
-            print("Text from delegate: \(detailTextField.text!)")
-        
-        self.navigationController?.popToRootViewController(animated: true)
+        delegate.didSelectString(detailTextField.text!)
+        print("Text from delegate: \(detailTextField.text!)")
+        presenter?.goBackToHomeView()
     }
 }

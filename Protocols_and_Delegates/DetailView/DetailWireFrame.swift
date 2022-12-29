@@ -25,7 +25,10 @@ class DetailWireFrame: DetailWireFrameProtocol {
         
         return view
     }
+    
+    func presentHomeView(from view: DetailViewProtocol) {
+        let currentViewController = view as! DetailView
+        
+        currentViewController.navigationController?.popToRootViewController(animated: true)
+    }
 }
-
-// https://cheesecakelabs.com/blog/best-practices-viper-architecture/ dimecres
-// https://stackoverflow.com/questions/60734494/pass-data-to-previous-viewcontroller-viper

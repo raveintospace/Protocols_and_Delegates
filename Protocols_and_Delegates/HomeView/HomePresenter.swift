@@ -33,7 +33,3 @@ extension HomePresenter: HomeInteractorOutputProtocol {
     // TODO: implement interactor output methods
 }
 
-extension HomePresenter: StringProtocol {
-    func didSelectString(_ string: String) {
-    }
-}

@@ -18,6 +18,8 @@ protocol DetailViewProtocol: AnyObject {
 protocol DetailWireFrameProtocol {
     // PRESENTER -> WIREFRAME
     static func createDetailModule() -> UIViewController
+    
+    func presentHomeView(from view: DetailViewProtocol)
 }
 
 protocol DetailPresenterProtocol: AnyObject {
@@ -27,6 +29,8 @@ protocol DetailPresenterProtocol: AnyObject {
     var wireFrame: DetailWireFrameProtocol? { get set }
     
     func viewDidLoad()
+    
+    func goBackToHomeView()
 }
 
 protocol DetailInteractorOutputProtocol {
@@ -36,4 +40,8 @@ protocol DetailInteractorOutputProtocol {
 protocol DetailInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: DetailInteractorOutputProtocol? { get set }
+}
+
+protocol StringProtocol {
+    func didSelectString(_ string: String)
 }

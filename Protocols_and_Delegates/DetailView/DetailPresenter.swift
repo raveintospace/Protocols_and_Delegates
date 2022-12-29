@@ -15,10 +15,13 @@ class DetailPresenter: DetailPresenterProtocol  {
     weak var view: DetailViewProtocol?
     var interactor: DetailInteractorInputProtocol?
     var wireFrame: DetailWireFrameProtocol?
-    var delegate: StringProtocol?
     
     func viewDidLoad() {
         view?.setupDetailView()
+    }
+    
+    func goBackToHomeView() {
+        wireFrame?.presentHomeView(from: view!)
     }
 }
 
