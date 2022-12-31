@@ -1,9 +1,8 @@
 //
 //  DetailView.swift
 //  Protocols_and_Delegates
-//
+//  UITextField https://stackoverflow.com/questions/31363216/set-the-maximum-character-length-of-a-uitextfield-in-swift - (Simple solution without using a delegate)
 //  Created by Uri on 24/12/22.
-//  
 //
 
 import Foundation
@@ -49,9 +48,7 @@ extension DetailView: DetailViewProtocol {
         detailTextField.backgroundColor = .white
         detailTextField.textAlignment = .center
         
-        // add a maximum lenght for textfield
-        // https://developer.apple.com/forums/thread/110754
-        // https://www.hackingwithswift.com/example-code/uikit/how-to-limit-the-number-of-characters-in-a-uitextfield-or-uitextview
+        detailTextField.addTarget(self, action: #selector(detailTextFieldMaxLength(sender:)), for: .editingChanged)
     }
     
     func setupGoToHomeViewButton() {
@@ -72,5 +69,12 @@ extension DetailView: DetailViewProtocol {
         delegate.didSelectString(detailTextField.text!)
         print("Text from delegate: \(detailTextField.text!)")
         presenter?.goBackToHomeView()
+    }
+    
+    @objc func detailTextFieldMaxLength(sender: UITextField) {
+        if let text = sender.text, text.count >= 15 {
+            sender.text = String(text.dropLast(text.count - 15))
+            return
+        }
     }
 }
