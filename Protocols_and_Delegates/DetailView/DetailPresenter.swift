@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DetailPresenter: DetailPresenterProtocol  {
+final class DetailPresenter: DetailPresenterProtocol  {
     
     // MARK: Properties
     weak var view: DetailViewProtocol?
@@ -23,8 +23,15 @@ class DetailPresenter: DetailPresenterProtocol  {
     func goBackToHomeView() {
         wireFrame?.presentHomeView(from: view!)
     }
+    
+    func trimInputStringToLimit(text: String?) -> String? {
+        interactor?.trimInputStringToLimit(text: text)
+    }
+    
 }
 
 extension DetailPresenter: DetailInteractorOutputProtocol {
     // TODO: implement interactor output methods
 }
+
+

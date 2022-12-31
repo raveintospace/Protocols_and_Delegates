@@ -31,6 +31,8 @@ protocol DetailPresenterProtocol: AnyObject {
     func viewDidLoad()
     
     func goBackToHomeView()
+    
+    func trimInputStringToLimit(text: String?) -> String?
 }
 
 protocol DetailInteractorOutputProtocol {
@@ -40,6 +42,7 @@ protocol DetailInteractorOutputProtocol {
 protocol DetailInteractorInputProtocol: AnyObject {
     // PRESENTER -> INTERACTOR
     var presenter: DetailInteractorOutputProtocol? { get set }
+    func trimInputStringToLimit(text: String?) -> String?
 }
 
 protocol StringProtocol {

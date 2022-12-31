@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DetailView: UIViewController {
+final class DetailView: UIViewController {
     
     // MARK: - Properties
     var presenter: DetailPresenterProtocol?
@@ -28,13 +28,14 @@ class DetailView: UIViewController {
 }
 
 extension DetailView: DetailViewProtocol {
-    
     func setupDetailView() {
         safeArea = view.layoutMarginsGuide
         setupDetailTextField()
         setupGoToHomeViewButton()
     }
-    
+}
+
+private extension DetailView {
     func setupDetailTextField() {
         view.addSubview(detailTextField)
         
@@ -72,9 +73,6 @@ extension DetailView: DetailViewProtocol {
     }
     
     @objc func detailTextFieldMaxLength(sender: UITextField) {
-        if let text = sender.text, text.count >= 15 {
-            sender.text = String(text.dropLast(text.count - 15))
-            return
-        }
+        sender.text = presenter?.trimInputStringToLimit(text: sender.text)
     }
 }
