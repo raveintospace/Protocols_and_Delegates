@@ -1,7 +1,7 @@
 //
 //  DetailView.swift
 //  Protocols_and_Delegates
-//  UITextField https://stackoverflow.com/questions/31363216/set-the-maximum-character-length-of-a-uitextfield-in-swift - (Simple solution without using a delegate)
+//  
 //  Created by Uri on 24/12/22.
 //
 
